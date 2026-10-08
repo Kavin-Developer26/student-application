@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Directory | Database View</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Top Navigation -->
+    <nav class="navbar">
+        <a href="index.html" class="nav-brand">
+            <span class="brand-badge">Full Stack</span>
+            <span>Student Portal</span>
+        </a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="register.html" class="nav-link">Sign Up</a>
+            <a href="students.html" class="nav-link active">Student Directory</a>
+            <a href="http://localhost:8080/h2-console" target="_blank" class="nav-link">H2 Database</a>
+        </div>
+    </nav>
+
+    <!-- Student List View -->
+    <div class="wide-container">
+        <div class="card">
+            <div class="header-section" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; text-align: left;">
+                <div>
+                    <h1>Student Directory</h1>
+                    <p class="subtitle">Live database records persisted in Spring Data JPA / H2 (<span id="recordCount">Loading...</span>)</p>
+                </div>
+                <div style="display: flex; gap: 0.75rem;">
+                    <button id="refreshBtn" class="btn-secondary" style="padding: 0.6rem 1rem; font-size: 0.85rem;">↻ Refresh</button>
+                    <a href="register.html" class="btn-submit" style="text-decoration: none; padding: 0.6rem 1.25rem; font-size: 0.85rem; margin: 0;">+ New Student</a>
+                </div>
+            </div>
+
+            <!-- Search Bar -->
+            <div style="margin-bottom: 1.25rem;">
+                <input type="text" id="searchInput" placeholder="Search by name, email, or phone..." style="max-width: 400px;">
+            </div>
+
+            <!-- Table -->
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Full Name</th>
+                            <th>Email Address</th>
+                            <th>Phone</th>
+                            <th>DOB</th>
+                            <th>Age</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="studentsTableBody">
+                        <tr>
+                            <td colspan="7" class="empty-state">
+                                <span class="spinner"></span> Loading students from database...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/students.js"></script>
+</body>
+</html>

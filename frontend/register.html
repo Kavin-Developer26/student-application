@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | Student Registration</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Top Navigation -->
+    <nav class="navbar">
+        <a href="index.html" class="nav-brand">
+            <span class="brand-badge">Full Stack</span>
+            <span>Student Portal</span>
+        </a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="register.html" class="nav-link active">Sign Up</a>
+            <a href="students.html" class="nav-link">Student Directory</a>
+            <a href="http://localhost:8080/h2-console" target="_blank" class="nav-link">H2 Database</a>
+        </div>
+    </nav>
+
+    <!-- Registration Card -->
+    <div class="container">
+        <div class="card">
+            <div class="header-section">
+                <h1>Sign Up</h1>
+                <p class="subtitle">Complete the student profile with validated credentials</p>
+            </div>
+
+            <!-- Alert notification -->
+            <div id="alertBanner" class="alert-banner"></div>
+
+            <form id="studentForm" novalidate>
+                <!-- Name Field -->
+                <div class="form-group">
+                    <label for="name">
+                        Full Name
+                        <span class="field-hint">3–20 alphabetical chars</span>
+                    </label>
+                    <div class="input-container">
+                        <input type="text" id="name" name="name" placeholder="e.g. John Doe" required autocomplete="name">
+                    </div>
+                    <span id="nameError" class="error-message"></span>
+                </div>
+
+                <!-- Email Field -->
+                <div class="form-group">
+                    <label for="email">
+                        Email Address
+                        <span class="field-hint">Valid email format</span>
+                    </label>
+                    <div class="input-container">
+                        <input type="email" id="email" name="email" placeholder="john.doe@example.com" required autocomplete="email">
+                    </div>
+                    <span id="emailError" class="error-message"></span>
+                </div>
+
+                <!-- Phone Field -->
+                <div class="form-group">
+                    <label for="phone">
+                        Phone Number
+                        <span class="field-hint">10 digits (starting 6–9)</span>
+                    </label>
+                    <div class="input-container">
+                        <input type="number" id="phone" name="phone" placeholder="9876543210" required>
+                    </div>
+                    <span id="phoneError" class="error-message"></span>
+                </div>
+
+                <!-- DOB Field -->
+                <div class="form-group">
+                    <label for="dob">
+                        Date of Birth
+                        <span class="field-hint">Past or present date</span>
+                    </label>
+                    <div class="input-container">
+                        <input type="date" id="dob" name="dob" required>
+                    </div>
+                    <span id="dobError" class="error-message"></span>
+                </div>
+
+                <!-- Age Field -->
+                <div class="form-group">
+                    <label for="age">
+                        Age
+                        <span class="field-hint">Min 18, Max 100</span>
+                    </label>
+                    <div class="input-container">
+                        <input type="number" id="age" name="age" placeholder="21" min="18" max="100" required>
+                    </div>
+                    <span id="ageError" class="error-message"></span>
+                </div>
+
+                <!-- Submit Button -->
+                <div style="margin-top: 0.5rem;">
+                    <button type="submit" id="submitBtn" class="btn-submit">
+                        Register Student
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

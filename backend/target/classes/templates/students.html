@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Directory | Database View</title>
+    <link rel="stylesheet" th:href="@{/layout.css}">
+</head>
+<body>
+
+    <!-- Top Navigation -->
+    <nav class="navbar">
+        <a th:href="@{/register}" class="nav-brand">
+            <span class="brand-badge">Spring Boot</span>
+            <span>Student Portal</span>
+        </a>
+        <div class="nav-links">
+            <a th:href="@{/register}" class="nav-link">Sign Up</a>
+            <a th:href="@{/view-students}" class="nav-link active">Database Directory</a>
+            <a href="http://localhost:8080/h2-console" target="_blank" class="nav-link">H2 Console</a>
+        </div>
+    </nav>
+
+    <div class="wide-container">
+        <div class="card">
+            <div class="header-section">
+                <h1>Registered Students</h1>
+                <p class="subtitle">Live records queried directly from the JPA / H2 Database table: <code>students</code></p>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>DOB</th>
+                            <th>Age</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:if="${#lists.isEmpty(students)}">
+                            <td colspan="6" class="empty-state">
+                                No students registered yet. <a th:href="@{/register}" style="color: var(--accent-primary);">Register your first student</a>
+                            </td>
+                        </tr>
+                        <tr th:each="std : ${students}">
+                            <td style="font-family: 'JetBrains Mono', monospace; color: var(--accent-secondary);" th:text="'#' + ${std.id}">#1</td>
+                            <td style="font-weight: 600;" th:text="${std.name}">John Doe</td>
+                            <td th:text="${std.email}">john@example.com</td>
+                            <td style="font-family: 'JetBrains Mono', monospace;" th:text="${std.phone}">9876543210</td>
+                            <td th:text="${std.dob}">2002-05-15</td>
+                            <td th:text="${std.age}">22</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="actions-row" style="margin-top: 2rem;">
+                <a th:href="@{/register}" class="btn-submit" style="text-decoration: none; text-align: center; max-width: 250px;">+ Register New Student</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

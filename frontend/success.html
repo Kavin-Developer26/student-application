@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Successful | Student Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Top Navigation -->
+    <nav class="navbar">
+        <a href="index.html" class="nav-brand">
+            <span class="brand-badge">Full Stack</span>
+            <span>Student Portal</span>
+        </a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="register.html" class="nav-link">Sign Up</a>
+            <a href="students.html" class="nav-link">Student Directory</a>
+            <a href="http://localhost:8080/h2-console" target="_blank" class="nav-link">H2 Database</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="card success-card">
+            <div class="success-icon-wrapper">✓</div>
+            
+            <h1>Registration Successful!</h1>
+            <p class="subtitle">Your student information has passed validation and is stored in the database.</p>
+
+            <div class="details-grid" id="detailsGrid">
+                <div class="detail-row">
+                    <span class="detail-label">Database ID</span>
+                    <span class="detail-value" id="displayId">#1</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Full Name</span>
+                    <span class="detail-value" id="displayName">-</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Email ID</span>
+                    <span class="detail-value" id="displayEmail">-</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Phone Number</span>
+                    <span class="detail-value" id="displayPhone">-</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Date of Birth</span>
+                    <span class="detail-value" id="displayDob">-</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Age</span>
+                    <span class="detail-value" id="displayAge">-</span>
+                </div>
+            </div>
+
+            <div class="actions-row">
+                <a href="register.html" class="btn-secondary">Register Another</a>
+                <a href="students.html" class="btn-secondary" style="background: var(--accent-gradient); color: white; border: none;">View Student Directory</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Populate submitted details from session storage
+        try {
+            const dataStr = sessionStorage.getItem('registeredStudent');
+            if (dataStr) {
+                const data = JSON.parse(dataStr);
+                document.getElementById('displayId').textContent = data.id ? '#' + data.id : 'Saved';
+                document.getElementById('displayName').textContent = data.name || '-';
+                document.getElementById('displayEmail').textContent = data.email || '-';
+                document.getElementById('displayPhone').textContent = data.phone || '-';
+                document.getElementById('displayDob').textContent = data.dob || '-';
+                document.getElementById('displayAge').textContent = data.age ? data.age + ' yrs' : '-';
+            }
+        } catch (e) {
+            console.error('Error reading session data', e);
+        }
+    </script>
+</body>
+</html>

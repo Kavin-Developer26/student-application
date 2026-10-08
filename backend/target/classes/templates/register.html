@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration | Spring Boot</title>
+    <link rel="stylesheet" th:href="@{/layout.css}">
+</head>
+<body>
+
+    <!-- Top Navigation -->
+    <nav class="navbar">
+        <a th:href="@{/register}" class="nav-brand">
+            <span class="brand-badge">Spring Boot</span>
+            <span>Student Portal</span>
+        </a>
+        <div class="nav-links">
+            <a th:href="@{/register}" class="nav-link active">Sign Up</a>
+            <a th:href="@{/view-students}" class="nav-link">Database Directory</a>
+            <a href="http://localhost:8080/h2-console" target="_blank" class="nav-link">H2 Console</a>
+        </div>
+    </nav>
+
+    <!-- Main Form Card -->
+    <div class="container">
+        <div class="card">
+            <div class="header-section">
+                <h1>Sign Up</h1>
+                <p class="subtitle">Complete the form below with valid student credentials</p>
+            </div>
+
+            <form th:action="@{/register}" th:object="${student}" method="post">
+                <!-- Name Field -->
+                <div class="form-group">
+                    <label for="name">
+                        Full Name
+                        <span class="field-hint">3–20 alphabetical chars</span>
+                    </label>
+                    <input type="text" id="name" th:field="*{name}" 
+                           placeholder="e.g. John Doe"
+                           th:classappend="${#fields.hasErrors('name')} ? 'input-error' : ''" />
+                    <span class="error-message" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+                </div>
+
+                <!-- Email Field -->
+                <div class="form-group">
+                    <label for="email">
+                        Email Address
+                        <span class="field-hint">e.g. user@domain.com</span>
+                    </label>
+                    <input type="email" id="email" th:field="*{email}" 
+                           placeholder="john.doe@example.com"
+                           th:classappend="${#fields.hasErrors('email')} ? 'input-error' : ''" />
+                    <span class="error-message" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+                </div>
+
+                <!-- Phone Field -->
+                <div class="form-group">
+                    <label for="phone">
+                        Phone Number
+                        <span class="field-hint">10 digits (starting 6-9)</span>
+                    </label>
+                    <input type="number" id="phone" th:field="*{phone}" 
+                           placeholder="9876543210"
+                           th:classappend="${#fields.hasErrors('phone')} ? 'input-error' : ''" />
+                    <span class="error-message" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></span>
+                </div>
+
+                <!-- DOB Field -->
+                <div class="form-group">
+                    <label for="dob">
+                        Date of Birth
+                        <span class="field-hint">Past or present date</span>
+                    </label>
+                    <input type="date" id="dob" th:field="*{dob}" 
+                           th:classappend="${#fields.hasErrors('dob')} ? 'input-error' : ''" />
+                    <span class="error-message" th:if="${#fields.hasErrors('dob')}" th:errors="*{dob}"></span>
+                </div>
+
+                <!-- Age Field -->
+                <div class="form-group">
+                    <label for="age">
+                        Age
+                        <span class="field-hint">Between 18 and 100</span>
+                    </label>
+                    <input type="number" id="age" th:field="*{age}" 
+                           placeholder="21"
+                           th:classappend="${#fields.hasErrors('age')} ? 'input-error' : ''" />
+                    <span class="error-message" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></span>
+                </div>
+
+                <!-- Submit Button -->
+                <div style="margin-top: 1rem;">
+                    <input type="submit" value="Register Student" class="btn-submit" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

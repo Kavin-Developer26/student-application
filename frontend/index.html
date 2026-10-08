@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration System | Spring Boot & Thymeleaf</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Top Navigation -->
+    <nav class="navbar">
+        <a href="index.html" class="nav-brand">
+            <span class="brand-badge">Full Stack</span>
+            <span>Student Portal</span>
+        </a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link active">Home</a>
+            <a href="register.html" class="nav-link">Sign Up</a>
+            <a href="students.html" class="nav-link">Student Directory</a>
+            <a href="http://localhost:8080/h2-console" target="_blank" class="nav-link">H2 Database</a>
+        </div>
+    </nav>
+
+    <!-- Hero / Main Card -->
+    <div class="wide-container">
+        <div class="card">
+            <div class="header-section">
+                <h1>Student Registration & Validation Portal</h1>
+                <p class="subtitle">Built with Spring Boot 3, Jakarta Validation, Spring Data JPA, Embedded H2 Database & Thymeleaf</p>
+            </div>
+
+            <!-- Architecture Grid -->
+            <div class="feature-grid">
+                <a href="register.html" class="feature-card">
+                    <div class="feature-icon">📝</div>
+                    <div class="feature-title">Student Registration</div>
+                    <div class="feature-desc">Form validation with Name regex, Email format, 10-digit Phone, Date of Birth, and Age constraints (18–100).</div>
+                </a>
+
+                <a href="students.html" class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <div class="feature-title">Student Directory</div>
+                    <div class="feature-desc">View and manage all registered student records fetched live from the Spring Data JPA database.</div>
+                </a>
+
+                <a href="http://localhost:8080/h2-console" target="_blank" class="feature-card">
+                    <div class="feature-icon">💾</div>
+                    <div class="feature-title">H2 Database Console</div>
+                    <div class="feature-desc">Interactive in-browser SQL console. Inspect the <code>STUDENTS</code> table, run queries, and verify persistence.</div>
+                </a>
+
+                <a href="http://localhost:8080/register" target="_blank" class="feature-card">
+                    <div class="feature-icon">🍃</div>
+                    <div class="feature-title">Thymeleaf MVC View</div>
+                    <div class="feature-desc">Server-side rendered Thymeleaf views directly hosted by the Spring Boot backend at <code>/register</code>.</div>
+                </a>
+            </div>
+
+            <div class="actions-row" style="margin-top: 2.5rem;">
+                <a href="register.html" class="btn-submit" style="text-decoration: none; max-width: 280px;">Go to Registration Form →</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Successful | Spring Boot</title>
+    <link rel="stylesheet" th:href="@{/layout.css}">
+</head>
+<body>
+
+    <!-- Top Navigation -->
+    <nav class="navbar">
+        <a th:href="@{/register}" class="nav-brand">
+            <span class="brand-badge">Spring Boot</span>
+            <span>Student Portal</span>
+        </a>
+        <div class="nav-links">
+            <a th:href="@{/register}" class="nav-link">Sign Up</a>
+            <a th:href="@{/view-students}" class="nav-link">Database Directory</a>
+            <a href="http://localhost:8080/h2-console" target="_blank" class="nav-link">H2 Console</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="card success-card">
+            <div class="success-icon-wrapper">✓</div>
+            
+            <h1>Registration Successful!</h1>
+            <p class="subtitle">The student record has been validated and persisted to the database.</p>
+
+            <div class="details-grid">
+                <div class="detail-row">
+                    <span class="detail-label">Generated Student ID</span>
+                    <span class="detail-value" th:text="${student.id != null ? '#' + student.id : 'Auto-generated'}">#1</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Full Name</span>
+                    <span class="detail-value" th:text="${student.name}">John Doe</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Email ID</span>
+                    <span class="detail-value" th:text="${student.email}">john@example.com</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Phone Number</span>
+                    <span class="detail-value" th:text="${student.phone}">9876543210</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Date of Birth</span>
+                    <span class="detail-value" th:text="${student.dob}">2002-05-15</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Age</span>
+                    <span class="detail-value" th:text="${student.age} + ' yrs'">22 yrs</span>
+                </div>
+            </div>
+
+            <div class="actions-row">
+                <a th:href="@{/register}" class="btn-secondary">Register Another</a>
+                <a th:href="@{/view-students}" class="btn-secondary" style="background: var(--accent-gradient); color: white; border: none;">View All Students</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
